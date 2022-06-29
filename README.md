@@ -28,8 +28,12 @@ Setup Enviroment Variables
 ### Step2
 
 To run the application from commandline 
-Run `php artisan serve`
-note: php >= 8.1.7 required
+Run 
+```
+composer install
+npm install && npm run prod
+```
+note: php >= 8.1 required
 
 Running this command will run the application in built in php server @ http://localhost:8000
 
@@ -40,6 +44,13 @@ If you love docker, I used laravel sail to build the Application
 
 run the below command
 ```
+docker run --rm \
+    -u "$(id -u):$(id -g)" \
+    -v $(pwd):/var/www/html \
+    -w /var/www/html \
+    laravelsail/php81-composer:latest \
+    composer install --ignore-platform-reqs
+    
 ./vendor/bin/sail build
 ./vendor/bin/sail up -d 
 ```
