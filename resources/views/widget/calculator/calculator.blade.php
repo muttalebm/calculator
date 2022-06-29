@@ -3,8 +3,8 @@
 @section('content')
     <div class="main">
         <div class="display">
-            <p id="history"><i class="fa fa-history" aria-hidden="true"></i>&nbsp;History</p>
-            <h2 id="result"></h2>
+
+            <h2 id="result" class="gray"></h2>
         </div>
         <div class="buttons">
             <button id="clear" data-type="action">C</button>
