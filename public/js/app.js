@@ -2180,7 +2180,7 @@ document.addEventListener("DOMContentLoaded", function (event) {
     Normal_btn.addEventListener('click', function () {
       var text = this.innerHTML;
 
-      if (this.dataset.type === "operation" && equationArray[equationArray.length - 1].type === "operation") {
+      if (this.dataset.type === "operator" && equationArray[equationArray.length - 1].type === "operator") {
         return false;
       } else {
         equationArray.push({
@@ -2203,11 +2203,15 @@ document.addEventListener("DOMContentLoaded", function (event) {
         method: "post",
         data: {
           equation: equationArray
+        },
+        auth: {
+          username: "calculator",
+          password: "password"
         }
       }).then(function (resolve) {
-        result.innerHTML = resolve;
+        result.innerHTML = resolve.data.result;
       })["catch"](function (reject) {
-        console.log(reject);
+        console.log(reject.data);
       });
     } else {
       alert('please enter any Number');
