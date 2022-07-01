@@ -9,7 +9,14 @@ You can also build and run this app on your own local docker server
 
 ### Step1
 
-Setup Enviroment Variables
+Setup Environment Variables in .env file
+
+An example .env.example file is already setup.
+
+You can run
+```
+cp .env.example .env
+```
 
 | Env Name                | Value        | Default    | Explaination                            |
 |-------------------------|--------------|------------|-----------------------------------------|
@@ -32,6 +39,8 @@ Run
 ```
 composer install
 npm install && npm run prod
+php artisan key:generate
+php artisan serve
 ```
 note: php >= 8.1 required
 
@@ -54,3 +63,11 @@ docker run --rm \
 ./vendor/bin/sail build
 ./vendor/bin/sail up -d 
 ```
+
+## Approach
+When you visit the home page of the application, a calculator UI will be shown. Users can use the mouse to run their calculations.
+Once the user clicks on the `=` button an API will be called in the backend to parse and calculate the equation. The api responds with the Result which is then rendered to the UI
+
+The UI takes each button click and stores in an array which is passed to the backend API, the Backend API parses the Array to a proper quation and runs the arithmetic operations accordingly.
+
+Note: if precedence is important for the admin, set USE_PRECEDENCE=true. By enabling this variable, the API will use RPN (Reverse Polish Notiation) to parse the input equation then run the arithmetic operations according to their precedence  
