@@ -14,4 +14,4 @@ use Illuminate\Support\Facades\Route;
 |
 */
 
-Route::post('/calculate',[\App\Http\Controllers\MathAPIController::class,'index']);
+Route::post('/calculate',[\App\Http\Controllers\MathAPIController::class,'index'])->middleware('basic.auth');

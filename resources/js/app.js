@@ -18,7 +18,7 @@ document.addEventListener("DOMContentLoaded", function (event) {
     Normal_btn.forEach((Normal_btn, index) => {
         Normal_btn.addEventListener('click', function () {
             let text = this.innerHTML;
-            if (this.dataset.type === "operation" && equationArray[equationArray.length - 1].type === "operation") {
+            if (this.dataset.type === "operator" && equationArray[equationArray.length - 1].type === "operator") {
                 return false
             } else {
                 equationArray.push({
@@ -42,12 +42,16 @@ document.addEventListener("DOMContentLoaded", function (event) {
                 method: "post",
                 data: {
                     equation: equationArray
+                },
+                auth:{
+                    username:process.env.MIX_API_BASIC_AUTH_USER,
+                    password:process.env.MIX_API_BASIC_AUTH_PASSWORD
                 }
             }).then((resolve) => {
-                result.innerHTML = resolve
+                result.innerHTML = resolve.data.result
             })
                 .catch((reject) => {
-                    console.log(reject)
+                    console.log(reject.data)
                 })
 
         } else {
