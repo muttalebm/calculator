@@ -47,22 +47,6 @@ note: php >= 8.1 required
 Running this command will run the application in built in php server @ http://localhost:8000
 
 
-#### Step2 (optional)
-
-If you love docker, I used laravel sail to build the Application
-
-run the below command
-```
-docker run --rm \
-    -u "$(id -u):$(id -g)" \
-    -v $(pwd):/var/www/html \
-    -w /var/www/html \
-    laravelsail/php81-composer:latest \
-    composer install --ignore-platform-reqs
-    
-./vendor/bin/sail build
-./vendor/bin/sail up -d 
-```
 
 ## Approach
 When you visit the home page of the application, a calculator UI will be shown. Users can use the mouse to run their calculations.
